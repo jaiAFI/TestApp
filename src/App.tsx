@@ -1,13 +1,21 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
   Text,
   View,
   Pressable,
   useWindowDimensions,
+  Platform,
 } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 
 export default function App() {
+  useEffect(() => {
+    if (Platform.OS == 'android') {
+      SplashScreen.hide();
+    }
+  }, []);
+
   const {height} = useWindowDimensions();
   const [number, setNumber] = useState(0);
 
